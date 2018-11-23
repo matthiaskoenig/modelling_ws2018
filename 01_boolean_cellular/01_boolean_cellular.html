@@ -13155,10 +13155,10 @@ matplotlib</code></pre>
 <p>General Properties of Boolean Networks:</p>
 <ul>
 <li>Fixed topology (doesn’t change with time)</li>
-<li>Dynamic (states </li>
+<li>Dynamic (states evolve over time, updates happen at discrete time steps)</li>
 <li>Synchronous (update of all states occurs at the same time)</li>
-<li>Node States: Deterministic, discrete (binary)</li>
-<li>Gate Function: Boolean (rules which calculate the update for the state)</li>
+<li>Node States: Deterministic (based on rules), discrete (binary)</li>
+<li>Gate Function: Boolean (rules which calculate the update for the state, return discrete new state)</li>
 <li>Flow: Information</li>
 </ul>
 
@@ -13168,7 +13168,7 @@ matplotlib</code></pre>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>For one dimensional input the unary boolean operators are</p>
+<p>For one dimensional input of a given node in a boolean network the possible unary boolean operators are</p>
 <ul>
 <li>IDENTITY (<code>[0]-&gt;[0], [1]-&gt;[1]</code>) </li>
 <li>INVERSE (<code>[0]-&gt;[1], [1]-&gt;[0]</code>)</li>
@@ -13209,13 +13209,13 @@ matplotlib</code></pre>
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># number of steps</span>
 <span class="n">states</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]]</span>  <span class="c1"># initial state</span>
 <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">N</span><span class="p">:</span>
-    <span class="c1"># get last states</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">states</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="c1"># get state of last step</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">states</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
     
-    <span class="c1"># TODO: update state based on rules</span>
+    <span class="c1"># TODO: update state by applying rules</span>
     <span class="n">Xnew</span> <span class="o">=</span> <span class="o">...</span>
     
-    <span class="c1"># store state</span>
+    <span class="c1"># store new state</span>
     <span class="n">states</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Xnew</span><span class="p">)</span>
     
 <span class="nb">print</span><span class="p">(</span><span class="n">states</span><span class="p">)</span>
@@ -13231,7 +13231,7 @@ matplotlib</code></pre>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Task-2">Task 2<a class="anchor-link" href="#Task-2">&#182;</a></h3><p><img src="Example2.png" width="200"/></p>
 <ul>
-<li>Simulate the following more complex boolean network consisting of 5 nodes. </li>
+<li>Simulate the following more complex boolean network consisting of 5 nodes (reuse the code from task 1)</li>
 <li>The update rules are given by</li>
 </ul>
 
@@ -13266,8 +13266,8 @@ X4 = XOR(X3, X2)</code></pre>
 <li>A new generation is created (advancing t by 1), according to some fixed rule (generally, a mathematical function) that determines the new state of each cell in terms of the current state of the cell and the states of the cells in its neighborhood. </li>
 <li>Typically, the rule for updating the state of cells is the same for each cell and does not change over time, and is applied to the whole grid simultaneously.</li>
 </ul>
-<p>For more information see <a href="https://en.wikipedia.org/wiki/Cellular_automaton">https://en.wikipedia.org/wiki/Cellular_automaton</a>
-A more in depth introduction with hints how to solve the task is given in <a href="https://natureofcode.com/book/chapter-7-cellular-automata/">https://natureofcode.com/book/chapter-7-cellular-automata/</a></p>
+<p>For more information see <a href="https://en.wikipedia.org/wiki/Cellular_automaton">https://en.wikipedia.org/wiki/Cellular_automaton</a>.</p>
+<p>A more in depth introduction with hints how to solve the task is given in <a href="https://natureofcode.com/book/chapter-7-cellular-automata/">https://natureofcode.com/book/chapter-7-cellular-automata/</a></p>
 
 </div>
 </div>
@@ -13277,10 +13277,10 @@ A more in depth introduction with hints how to solve the task is given in <a hre
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Task-3">Task 3<a class="anchor-link" href="#Task-3">&#182;</a></h3><p>Build and simulate the simple cellular automaton with the following characteristics:</p>
 <ul>
-<li>Grid. We will use the simplest possible grid, which is one-dimensional: a line of cells.</li>
-<li>States. The simplest set of states (beyond having only one state) are the two possible states per cell: 0 or 1.</li>
-<li>Neighborhood. The simplest neighborhood in one dimension for any given cell would be the cell itself and its two adjacent neighbors: one to the left and one to the right.</li>
-<li>Rules: Define how a cell is updated based on its neighborhood. The simplest rules are identical rules for every cell.</li>
+<li><strong>Grid</strong>: We will use the simplest possible grid, which is one-dimensional: a line of cells.</li>
+<li><strong>States</strong>: The simplest set of states (beyond having only one state) are the two possible states per cell: 0 or 1.</li>
+<li><strong>Neighborhood</strong>: The simplest neighborhood in one dimension for any given cell would be the cell itself and its two adjacent neighbors: one to the left and one to the right.</li>
+<li><strong>Rules</strong>: Define how a cell is updated based on its neighborhood. The simplest rules are identical rules for every cell.</li>
 </ul>
 <p>For the update rules we need to define an outcome (new state value 0 or 1) for a cell based on its current neighborhood.
 The following rules are applied:</p>
@@ -13301,6 +13301,19 @@ The following rules are applied:</p>
 
 </div>
 </div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+
+    </div>
+</div>
+</div>
+
 </div>
     </div>
   </div>
