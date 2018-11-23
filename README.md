@@ -15,7 +15,7 @@ The notebooks can be executed in a virtual environment.
 ```bash
 mkvirtualenv modelling --python=python3
 (modelling) pip install -r requirements.txt
-(modelling) pip install jupyterlab
+(modelling) pip install ipykernel jupyterlab
 ipython kernel install --user --name=modelling
 (modelling) jupyter lab
 ```

@@ -13275,7 +13275,7 @@ A more in depth introduction with hints how to solve the task is given in <a hre
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Task-3">Task 3<a class="anchor-link" href="#Task-3">&#182;</a></h3><p>Build and simulate the simplest cellular automaton with the following characteristics:</p>
+<h3 id="Task-3">Task 3<a class="anchor-link" href="#Task-3">&#182;</a></h3><p>Build and simulate the simple cellular automaton with the following characteristics:</p>
 <ul>
 <li>Grid. We will use the simplest possible grid, which is one-dimensional: a line of cells.</li>
 <li>States. The simplest set of states (beyond having only one state) are the two possible states per cell: 0 or 1.</li>
@@ -13283,10 +13283,10 @@ A more in depth introduction with hints how to solve the task is given in <a hre
 <li>Rules: Define how a cell is updated based on its neighborhood. The simplest rules are identical rules for every cell.</li>
 </ul>
 <p>For the update rules we need to define an outcome (new state value 0 or 1) for a cell based on its current neighborhood.
-The following rules should be applied</p>
-<p>neighborhood -&gt; new state</p>
+The following rules are applied:</p>
 
-<pre><code>000 -&gt; 0
+<pre><code>neighborhood (with cell in the center) -&gt; new state of cell
+000 -&gt; 0
 001 -&gt; 1
 010 -&gt; 0
 011 -&gt; 1
@@ -13294,6 +13294,10 @@ The following rules should be applied</p>
 101 -&gt; 0
 110 -&gt; 1
 111 -&gt; 0</code></pre>
+<ul>
+<li>the one dimensional grid contains <code>101</code> cells</li>
+<li>the initial state of all cells is 0, with exception of the cell in the middle of the grid which starts with state 1</li>
+</ul>
 
 </div>
 </div>
